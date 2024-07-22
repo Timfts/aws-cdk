@@ -43,9 +43,6 @@ func NewCdkLearningStack(scope constructs.Construct, id string, props *CdkLearni
 			AllowMethods: jsii.Strings("GET", "POST", "DELETE", "PUT", "OPTIONS"),
 			AllowOrigins: jsii.Strings("*"),
 		},
-		DeployOptions: &awsapigateway.StageOptions{
-			LoggingLevel: awsapigateway.MethodLoggingLevel_INFO,
-		},
 	})
 
 	integration := awsapigateway.NewLambdaIntegration(myFunction, nil)

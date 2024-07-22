@@ -1,6 +1,8 @@
 package types
 
-import "golang.org/x/crypto/bcrypt"
+import (
+	"golang.org/x/crypto/bcrypt"
+)
 
 type RegisterUser struct {
 	Username string `json:"username"`
