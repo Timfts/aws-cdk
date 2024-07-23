@@ -45,11 +45,12 @@ func ValidateJWTMiddleware(next func(req events.APIGatewayProxyRequest) (events.
 
 func extractTokenFromHeaders(headers map[string]string) string {
 	authHeader, ok := headers["Authorization"]
+
 	if !ok {
 		return ""
 	}
 
-	splitToken := strings.Split(authHeader, "Bearer")
+	splitToken := strings.Split(authHeader, "Bearer ")
 	if len(splitToken) != 2 {
 		return ""
 	}
