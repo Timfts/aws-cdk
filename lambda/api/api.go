@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+	"fmt"
 	"lambda-func/database"
 	"lambda-func/types"
 	"net/http"
@@ -105,8 +106,11 @@ func (api ApiHandler) LoginUser(req events.APIGatewayProxyRequest) (events.APIGa
 		}, nil
 	}
 
+	accessToken := types.CreateToken(user)
+	successMsg := fmt.Sprintf(`{"access_token": "%s"}`, accessToken)
+
 	return events.APIGatewayProxyResponse{
-		Body:       "Successfully logged in",
+		Body:       successMsg,
 		StatusCode: http.StatusOK,
 	}, nil
 }
